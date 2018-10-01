@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="24a38eb5-6fc1-490d-bc06-e9fc495f22e8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/install_requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkey/leaderboard_viewer/templates/leaderboard_viewer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/mkey/leaderboard_viewer/templates/leaderboard_viewer/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkey/leaderboard_viewer/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mkey/leaderboard_viewer/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mkey/mkey/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/mkey/mkey/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/muh_logic.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/urls.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -67,7 +64,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mkey/leaderboard_viewer/templates/leaderboard_viewer/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="161">
@@ -84,8 +81,17 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="19">
-              <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
+            <state relative-caret-position="95">
+              <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="install_requirements.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/install_requirements.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="4" selection-start-column="4" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -133,11 +139,12 @@
         <option value="$PROJECT_DIR$/mkey/leaderboard_viewer/muh_logic.py" />
         <option value="$PROJECT_DIR$/input.txt" />
         <option value="$PROJECT_DIR$/muh_logic.py" />
-        <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/urls.py" />
         <option value="$PROJECT_DIR$/mkey/leaderboard_viewer/views.py" />
         <option value="$PROJECT_DIR$/mkey/mkey/settings.py" />
         <option value="$PROJECT_DIR$/mkey/leaderboard_viewer/templates/leaderboard_viewer/index.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/install_requirements.txt" />
       </list>
     </option>
   </component>
@@ -165,38 +172,6 @@
           <expand>
             <path>
               <item name="mkey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mkey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mkey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-              <item name="leaderboard_viewer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mkey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-              <item name="leaderboard_viewer" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mkey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-              <item name="leaderboard_viewer" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="leaderboard_viewer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mkey" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
-              <item name="mkey" type="462c0819:PsiDirectoryNode" />
               <item name="mkey" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -281,14 +256,14 @@
       <window_info anchor="bottom" id="Python Console" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32925585" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22462203" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22462203" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39959225" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.39959225" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -388,13 +363,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="1" column="14" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mkey/mkey/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -440,6 +408,20 @@
             <element signature="n#style#0;n#textarea#0;n#label#0;n#div#1;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="e#1688#1694#1#HTML" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/install_requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="4" selection-start-column="4" selection-end-column="4" />
         </state>
       </provider>
     </entry>
