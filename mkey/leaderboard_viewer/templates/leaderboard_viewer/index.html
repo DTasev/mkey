@@ -23,8 +23,31 @@
     .code {
       border-radius: 5px;
       border: 1px solid #5b5b5b;
+      overflow-x: scroll;
     }
   </style>
+  <script>
+    function copyMacroToClipboard(button) {
+      let e = document.getElementById('macro-code');
+      const el = document.createElement('textarea');
+      el.value = e.textContent;
+      el.setAttribute('readonly', '');
+      el.style.position = 'absolute';
+      el.style.left = '-9999px';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      let message = document.createElement("p");
+      message.classList.add("full-width");
+      message.style.textAlign = "center";
+      message.textContent = "Successful!";
+      button.parentElement.appendChild(message);
+      setTimeout(() => {
+        button.parentElement.removeChild(message);
+      }, 2000);
+    }
+  </script>
 </head>
 <body class="common-body">
 <div class="w3-col l4">&nbsp;</div>
@@ -32,10 +55,14 @@
   Put this in a macro - it will give you a list of all party members' names and realms that you have to copy paste
   below.
   <div class="code">
-
     <code>
-      <pre>/run for i=1,GetNumGroupMembers()-1 do local u="party"..i print(format("%s-%s", GetUnitName(u),GetRealmName(u))) end</pre>
+      <pre id="macro-code">/run print(format("%s-%s", UnitFullName("player")))
+/run for i=1,GetNumGroupMembers()-1 do local u="party"..i print(format("%s-%s",UnitFullName(u))) end
+</pre>
     </code>
+    <button type="button" class="w3-button w3-border full-width"
+            onclick="copyMacroToClipboard(this)">Copy to Clipboard
+    </button>
   </div>
   <div>
     {{ realm_lowest_keys }}
