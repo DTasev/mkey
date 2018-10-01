@@ -13,6 +13,9 @@ class PlayerData:
         self.name = name
         self.realm = realm.lower()
 
+    def __str__(self):
+        return "{0}-{1}".format(self.name, self.realm.capitalize())
+
 
 DUNGEONS = {
     "Atal'dazar": 244,
@@ -28,8 +31,10 @@ DUNGEONS = {
 }
 
 
-def get_player_data(dungeon, player_wow_input):
+def get_realm_lowest_keys(dungeon, player_wow_input):
     dungeon_id = DUNGEONS[dungeon]
+    if not isinstance(player_wow_input, list):
+        player_wow_input = player_wow_input.split("\n")
     players = []
     for player_input in player_wow_input:
         # split the input into [name, realm] for each player, this is fragile for now
@@ -39,7 +44,7 @@ def get_player_data(dungeon, player_wow_input):
         player_data = PlayerData(*player_and_realm)
         players.append(player_data)
 
-    players_lowest_keys = []
+    realms_lowest_keys = []
     for player in players:
         response = requests.get(GET_REALM_INFO_URL.format(player.realm))
         realm_info_json = json.loads(response.text)
@@ -65,6 +70,7 @@ def get_player_data(dungeon, player_wow_input):
                 minutes = (last_group["duration"] / (1000 * 60)) % 60
                 print("Last group level", last_group["keystone_level"], "Duration",
                       "{0}m {1}s".format(minutes, seconds))
-                players_lowest_keys.append([last_group["keystone_level"], "{0}m {1}s".format(minutes, seconds)])
+                realms_lowest_keys.append(
+                    [str(player), last_group["keystone_level"], "{0}m {1}s".format(int(minutes), int(seconds))])
                 break
-    return players_lowest_keys
+    return sorted(realms_lowest_keys, key=lambda x: x[1])
