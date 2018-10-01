@@ -6,8 +6,13 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <style>
-    .pb-3 {
-      padding-bottom: 3px;
+    .padding-bottom {
+      padding-bottom: 5px;
+    }
+
+    .margin-y {
+      margin-bottom: 3rem;
+      margin-top: 3rem;
     }
 
     .full-width {
@@ -64,12 +69,30 @@
             onclick="copyMacroToClipboard(this)">Copy to Clipboard
     </button>
   </div>
-  <div>
-    {{ realm_lowest_keys }}
-  </div>
+
+  {% if realm_lowest_keys %}
+    <div class="margin-y w3-border">
+      <table class="w3-table">
+        <thead>
+        <th>Player</th>
+        <th>Lowest Key</th>
+        <th>Time</th>
+        </thead>
+        <tbody>
+        {% for l in realm_lowest_keys %}
+          <tr>
+            <td>{{ l.0 }}</td>
+            <td>{{ l.1 }}</td>
+            <td>{{ l.2 }}</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
   <form method="post" action="{% url 'leaderboard_viewer:index' %}">
     {% csrf_token %}
-    <div class="pb-3">
+    <div class="padding-bottom">
       <label>Dungeon<br>
         <select class="w3-select w3-border common-body full-width" name="dungeon">
           <option>Atal'dazar</option>
