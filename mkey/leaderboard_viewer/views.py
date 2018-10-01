@@ -58,6 +58,7 @@ DUNGEONS = {
 
 def get_realm_lowest_keys(dungeon, player_wow_input):
     dungeon_id = DUNGEONS[dungeon]
+    player_wow_input = player_wow_input.strip()
     if not isinstance(player_wow_input, list):
         player_wow_input = player_wow_input.split("\n")
     players = []
