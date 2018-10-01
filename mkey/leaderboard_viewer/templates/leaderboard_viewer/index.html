@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .pb-3 {
+      padding-bottom: 3px;
+    }
+
+    .full-width {
+      width: 100%;
+    }
+
+    .common-body {
+      border-color: #5b5b5b;
+      color: #e1ded5;
+      background-color: #202128;
+    }
+
+    .code {
+      border: 1px solid;
+      border-radius: 5px;
+      border-color: #5b5b5b;
+
+    }
+  </style>
+</head>
+<body class="common-body">
+<div>
+  <code><pre class="code">
+  the macro will totes be here
+</pre>
+  </code>
+  <div>
+    {{ realm_lowest_keys }}
+  </div>
+  <form method="post" action="{% url 'leaderboard_viewer:index' %}">
+    {% csrf_token %}
+    <div class="pb-3">
+      <label>Dungeon<br>
+        <select class="common-body full-width" name="dungeon">
+          <option>Atal'dazar</option>
+          <option>Freehold</option>
+          <option>Tol Dagor</option>
+          <option>The MOTHERLODE!!</option>
+          <option>Waycrest Manor</option>
+          <option>Kings' Rest</option>
+          <option>Temple of Sethraliss</option>
+          <option>The Underrot</option>
+          <option>Shrine of the Storm</option>
+          <option>Siege of Boralus</option>
+        </select>
+      </label>
+    </div>
+    <div>
+      <label>Player Names:<br>
+        <textarea class="common-body full-width" style="margin-right:15px" rows="15"
+                  name="wow_input">{{ previous_player_input }}</textarea>
+      </label>
+    </div>
+    <br>
+    <button>Find lowest key</button>
+  </form>
+</div>
+</body>
+</html>
