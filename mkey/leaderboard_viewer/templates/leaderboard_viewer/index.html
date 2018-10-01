@@ -29,10 +29,14 @@
 <body class="common-body">
 <div class="w3-col l4">&nbsp;</div>
 <div class="w3-col s12 m12 l4">
-  <code><pre class="code">
-  the macro will totes be here
-</pre>
-  </code>
+  Put this in a macro - it will give you a list of all party members' names and realms that you have to copy paste
+  below.
+  <div class="code">
+
+    <code>
+      <pre>/run for i=1,GetNumGroupMembers()-1 do local u="party"..i print(format("%s-%s", GetUnitName(u),GetRealmName(u))) end</pre>
+    </code>
+  </div>
   <div>
     {{ realm_lowest_keys }}
   </div>

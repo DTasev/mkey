@@ -1,13 +1,14 @@
 # Create your views here.
 import json
+import re
 
 import requests
 from django.shortcuts import render
 from django.views import generic
 
-ACCESS_TOKEN_STRING = "access_token=t7zk6fn45v6yh3bewmvcjscc"
-GET_REALM_INFO_URL = "https://eu.api.battle.net/data/wow/realm/{0}?namespace=dynamic-eu&locale=en_GB&access_token=t7zk6fn45v6yh3bewmvcjscc"
-GET_MYTHIC_LEADERBOARD_URL = "https://eu.api.battle.net/data/wow/connected-realm/{0}/mythic-leaderboard/?namespace=dynamic-eu&locale=en_GB&access_token=t7zk6fn45v6yh3bewmvcjscc"
+ACCESS_TOKEN_STRING = "access_token=myf2ucxu754w7u3zvu7extk3"
+GET_REALM_INFO_URL = "https://eu.api.battle.net/data/wow/realm/{0}?namespace=dynamic-eu&locale=en_GB&access_token=myf2ucxu754w7u3zvu7extk3"
+GET_MYTHIC_LEADERBOARD_URL = "https://eu.api.battle.net/data/wow/connected-realm/{0}/mythic-leaderboard/?namespace=dynamic-eu&locale=en_GB&access_token=myf2ucxu754w7u3zvu7extk3"
 
 
 class IndexView(generic.View):
@@ -26,10 +27,19 @@ class PlayerData:
 
     def __init__(self, name, realm):
         self.name = name
-        self.realm = realm.lower()
+        self.realm_regexp = re.compile('[A-Z][^A-Z]*')
+        self.realm = self.git_real_realm_name(realm)
 
     def __str__(self):
         return "{0}-{1}".format(self.name, self.realm.capitalize())
+
+    def git_real_realm_name(self, realm):
+        # handle realms like Quel'Thalas, Anub'arak
+        if "'" in realm:
+            return realm.replace("'", "").lower()
+
+        # handle realms like TarrenMill, GrimBatol
+        return "-".join(self.realm_regexp.findall(realm)).lower()
 
 
 DUNGEONS = {
