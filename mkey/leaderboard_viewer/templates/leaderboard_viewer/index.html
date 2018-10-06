@@ -69,9 +69,12 @@
             onclick="copyMacroToClipboard(this)">Copy to Clipboard
     </button>
   </div>
-
+  {% if error_message %}
+    <p>{{ error_message }}</p>
+  {% endif %}
   {% if realm_lowest_keys %}
     <div class="margin-y w3-border">
+    <p style="text-align:center">Showing the lowest key on each realm for: {{ dungeon_name }}</p>
       <table class="w3-table">
         <thead>
         <th>Player</th>

@@ -16,9 +16,15 @@ class IndexView(generic.View):
         return render(request, template_name='leaderboard_viewer/index.html')
 
     def post(self, request):
-        realm_lowest_keys = get_realm_lowest_keys(request.POST["dungeon"], request.POST["wow_input"])
+        try:
+            realm_lowest_keys = get_realm_lowest_keys(request.POST["dungeon"], request.POST["wow_input"])
+            error_message=""
+        except:
+            error_message="Encountered an error, please make sure the names are in format [..] Name-Realm"
+            realm_lowest_keys=None
+
         return render(request, 'leaderboard_viewer/index.html',
-                      {"previous_player_input": request.POST["wow_input"], "realm_lowest_keys": realm_lowest_keys})
+                      {"previous_player_input": request.POST["wow_input"], "realm_lowest_keys": realm_lowest_keys, "dungeon_name":request.POST["dungeon"], "error_message":error_message})
 
 
 class PlayerData:
