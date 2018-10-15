@@ -52,6 +52,15 @@
         button.parentElement.removeChild(message);
       }, 2000);
     }
+    function selectDungeon(dungeonName){
+        const select = document.getElementById("dungeon-selection");
+        for(let child of select.children){
+            if(child.textContent===dungeonName){
+                child.selected=true;
+                break;
+            }
+        }
+    }
   </script>
 </head>
 <body class="common-body">
@@ -97,7 +106,7 @@
     {% csrf_token %}
     <div class="padding-bottom">
       <label>Dungeon<br>
-        <select class="w3-select w3-border common-body full-width" name="dungeon">
+          <select id="dungeon-selection" class="w3-select w3-border common-body full-width" name="dungeon">
           <option>Atal'dazar</option>
           <option>Freehold</option>
           <option>Tol Dagor</option>
@@ -109,6 +118,9 @@
           <option>Shrine of the Storm</option>
           <option>Siege of Boralus</option>
         </select>
+        <script>
+            selectDungeon("{{ dungeon_name }}");
+        </script>
       </label>
     </div>
     <div>
