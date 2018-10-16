@@ -69,8 +69,17 @@ def get_realm_lowest_keys(dungeon, player_wow_input):
         player_wow_input = player_wow_input.split("\n")
     players = []
     for player_input in player_wow_input:
-        # split the input into [name, realm] for each player, this is fragile for now
-        player_and_realm = player_input.split("] ")[1].strip().split("-")
+
+        if "] " in player_input:
+            # handles input copied from the game, this will be in the format of 
+            # [time] <Name>-<Realm>, and splits the input into [name, realm] for each player
+            player_and_realm = player_input.split("] ")[1].strip().split("-")
+        elif "-" in player_input:
+            # handles when just the <Name>-<Realm> is provided
+            player_and_realm = player_input.split("-")
+        else:
+            # handles when only the realm is specified
+            player_and_realm = ["Vowyrin", player_input]
 
         # unpacks the list of 2 things -> [name, realm]
         player_data = PlayerData(*player_and_realm)
