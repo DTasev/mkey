@@ -33,7 +33,7 @@ class PlayerData:
 
     def __init__(self, name, realm):
         self.name = name
-        self.realm_regexp = re.compile('[A-Z][^A-Z]*')
+        self.realm_regexp = re.compile('[A-Za-z][^A-Z]*')
         self.realm = self.git_real_realm_name(realm)
 
     def __str__(self):
