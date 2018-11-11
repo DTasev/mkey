@@ -10,9 +10,9 @@ from django.shortcuts import render
 from django.views import generic
 from multiprocessing.pool import Pool
 
-ACCESS_TOKEN_STRING = "access_token=myf2ucxu754w7u3zvu7extk3"
-GET_REALM_INFO_URL = "https://eu.api.battle.net/data/wow/realm/{0}?namespace=dynamic-eu&locale=en_GB&access_token=myf2ucxu754w7u3zvu7extk3"
-GET_MYTHIC_LEADERBOARD_URL = "https://eu.api.battle.net/data/wow/connected-realm/{0}/mythic-leaderboard/?namespace=dynamic-eu&locale=en_GB&access_token=myf2ucxu754w7u3zvu7extk3"
+ACCESS_TOKEN_STRING = "&access_token=gebaggfxv5f9r2bjyzma3p2u"
+GET_REALM_INFO_URL = "https://eu.api.battle.net/data/wow/realm/{0}?namespace=dynamic-eu&locale=en_GB"+ACCESS_TOKEN_STRING
+GET_MYTHIC_LEADERBOARD_URL = "https://eu.api.battle.net/data/wow/connected-realm/{0}/mythic-leaderboard/?namespace=dynamic-eu&locale=en_GB"+ACCESS_TOKEN_STRING
 
 
 class IndexView(generic.View):
@@ -23,9 +23,12 @@ class IndexView(generic.View):
         try:
             realm_lowest_keys = get_realm_lowest_keys(request.POST["dungeon"], request.POST["wow_input"])
             error_message = ""
-        except:
-            error_message = "Encountered an error, please make sure the names are in format [..] Name-Realm"
+        except ValueError as error:
             realm_lowest_keys = None
+            error_message = str(error)
+        except:
+            realm_lowest_keys = None
+            error_message = "Something unexpected went terribly wrong. Yikes!"
 
         return render(request, 'leaderboard_viewer/index.html',
                       {"previous_player_input": request.POST["wow_input"], "realm_lowest_keys": realm_lowest_keys,
@@ -109,6 +112,10 @@ def get_realm_lowest_keys(dungeon, player_wow_input):
 
 def retrieve_realm_data(dungeon_id, player):
     response = requests.get(GET_REALM_INFO_URL.format(player.realm))
+
+    if response.status_code != 200:
+        raise ValueError("Request to Blizzard did not succeed.")
+    print(response.text)
     realm_info_json = json.loads(response.text)
     # +1 moves the index in front of the slash
     connected_id_start = realm_info_json["connected_realm"]["href"].rfind(
